@@ -74,6 +74,10 @@ class BurgerBuilder extends Component {
     this.setState({ purchasing: true });
   }; // it should be triggered whenever we click the order now button
 
+  purchaseCancelHandler = () => {
+    this.setState({ purchasing: false });
+  };
+
   render() {
     const disabledInfo = { ...this.state.ingredients };
 
@@ -83,7 +87,10 @@ class BurgerBuilder extends Component {
     return (
       <Aux>
         {/* only if the purchasing is true the modal should be visible */}
-        <Modal show={this.state.purchasing}>
+        <Modal
+          show={this.state.purchasing}
+          modalClosed={this.purchaseCancelHandler}
+        >
           <OrderSummary ingredients={this.state.ingredients} />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
