@@ -26,7 +26,7 @@ class BurgerBuilder extends Component {
     },
     totalPrice: 4,
     purchasable: false,
-    purchasing: false,
+    purchasing: false, // if the button was clicked
   };
 
   updatePurchaseState(ingredients) {
@@ -70,9 +70,9 @@ class BurgerBuilder extends Component {
     this.updatePurchaseState(updatedIngredients);
   };
 
-  purchaseHandler() {
+  purchaseHandler = () => {
     this.setState({ purchasing: true });
-  }
+  }; // it should be triggered whenever we click the order now button
 
   render() {
     const disabledInfo = { ...this.state.ingredients };
@@ -82,6 +82,7 @@ class BurgerBuilder extends Component {
     }
     return (
       <Aux>
+        {/* only if the purchasing is true the modal should be visible */}
         <Modal show={this.state.purchasing}>
           <OrderSummary ingredients={this.state.ingredients} />
         </Modal>
@@ -91,7 +92,7 @@ class BurgerBuilder extends Component {
           ingredientRemoved={this.removeIngredientHandler}
           disabled={disabledInfo}
           purchasable={this.state.purchasable}
-          ordered={this.purchasedHandler}
+          ordered={this.purchaseHandler}
           price={this.state.totalPrice}
         />
       </Aux>
