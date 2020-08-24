@@ -13,7 +13,7 @@
 }
 
 @media (min-width: 500px) {
-  .SideDRawer {
+  .SideDrawer {
     display: none;
   }
 }
@@ -24,4 +24,8 @@
 
 .Close {
   transform: translateX(-100%);
+}
+
+.Logo {
+  height: 11%;
 }
